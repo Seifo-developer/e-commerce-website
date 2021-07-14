@@ -25,13 +25,19 @@
 
 
 /* styling nav bar */
+
 .landing-page nav {
     background-color: var(--dark-color);
-    line-height: 4;
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
 }
 
 nav .max-width{
     justify-content: space-between;
+    height: 100%;
 }
 
 nav .logo{
@@ -40,16 +46,19 @@ nav .logo{
     color: var(--pink-color);
 }
 
-nav ul {
-    list-style: none;
+nav .max-width > ul {
     display: flex;
+    height: 100%;
 }
 
-nav ul li{
+nav .max-width > ul > li{
     margin-right: 3rem;
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 14px;
     letter-spacing: 1px;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li a {
@@ -62,6 +71,43 @@ nav ul li a:hover {
     color: var(--pink-color)
 }
 
+/* styling nested uls  */
+
+.shoes,
+.pages{
+    position: relative;
+}
+
+.nested-ul {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 220px;
+    padding: 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid black;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease-in-out;
+}
+
+.nested-ul li:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.nested-ul a {
+    color: var(--dark-color);
+}
+
+ul .shoes:hover > .nested-ul,
+ul .pages:hover > .nested-ul{
+    opacity: 1;
+    visibility: visible;
+    top: 49px;
+}
+
 /* media query for nav bar  */
 @media (max-width: 950px) {
     nav .logo{
@@ -70,5 +116,22 @@ nav ul li a:hover {
 
     nav .max-width{
         justify-content: center;
+    }
+}
+
+@media (max-width: 800px) {
+    nav .max-width > ul > li {
+        margin-right: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+
+    nav .max-width ul {
+        display: none;
+    }
+
+    nav .logo{
+        display: block;
     }
 }
